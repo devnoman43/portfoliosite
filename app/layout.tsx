@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope } from "next/font/google";
+import { Manrope, Newsreader } from "next/font/google";
 import { SITE_URL, site } from "./site";
 import "./globals.css";
 
@@ -7,6 +7,14 @@ const manrope = Manrope({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-sans",
+});
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  weight: "400",
+  style: "italic",
+  display: "swap",
+  variable: "--font-serif",
 });
 
 export const metadata: Metadata = {
@@ -64,7 +72,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={manrope.variable}>
+    <html lang="en" className={`${manrope.variable} ${newsreader.variable}`}>
       <body>{children}</body>
     </html>
   );
