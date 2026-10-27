@@ -1,6 +1,6 @@
-# Muhammad Javad Arshad — Portfolio
+# Noman Akhtar — Portfolio
 
-Personal portfolio for Muhammad Javad Arshad, an Austria-based Senior Full Stack Engineer specializing in TypeScript, Next.js, React, Node.js, Shopify, WordPress, and SaaS products.
+Personal portfolio for Noman Akhtar, an Austria-based Senior Full Stack Engineer specializing in TypeScript, Next.js, React, Node.js, Shopify, WordPress, and SaaS products.
 
 ## Local development
 

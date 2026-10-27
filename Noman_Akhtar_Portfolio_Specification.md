@@ -1,4 +1,4 @@
-# Muhammad Javad Arshad -- Portfolio Website Specification
+# Noman Akhtar -- Portfolio Website Specification
 
 ## Objective
 
@@ -30,7 +30,7 @@ companies.
 
 Display:
 
--   Muhammad Javad Arshad
+-   Noman Akhtar
 -   Senior Full Stack Web Developer
 -   Shopify Expert \| WordPress Expert \| SaaS Engineer
 

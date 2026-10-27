@@ -1,6 +1,3 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import {
   ArrowDownRight,
@@ -18,14 +15,14 @@ import {
   Layers3,
   Linkedin,
   Mail,
-  Menu,
   ServerCog,
   ShoppingBag,
   Workflow,
-  X,
   Zap,
 } from "lucide-react";
-import { useState } from "react";
+import Nav from "./components/Nav";
+import Reveal from "./components/Reveal";
+import { SITE_URL, site } from "./site";
 
 const projects: Array<{ name: string; type: string; stack: string; tone: string; url?: string }> = [
   { name: "TrySkyMD", type: "Health & hydration commerce", stack: "Shopify · Liquid · eCommerce", tone: "cyan", url: "https://tryskymd.com/" },
@@ -36,6 +33,8 @@ const projects: Array<{ name: string; type: string; stack: string; tone: string;
   { name: "Peeko Oysters", type: "Technology . Food . Events", stack: "HubSpot · CDN · eCommerce", tone: "violet", url: "https://peekooysters.com/" },
   { name: "Unicon", type: "Technology . Education . Engineering", stack: "HubSpot · CDN · Automation", tone: "violet", url: "https://www.unicon.net/" },
 ];
+
+const CARD_SIZES = "(max-width: 620px) calc(100vw - 88px), (max-width: 900px) calc(50vw - 62px), 368px";
 
 const services = [
   ["TypeScript product engineering", "Type-safe, maintainable applications designed for complex workflows and long-term growth.", Braces],
@@ -61,20 +60,39 @@ const stacks = [
   ["Growth & analytics", "GA4, Google Ads, GTM, conversion tracking, Google Business Profile", Gauge],
 ];
 
-function Reveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const reduce = useReducedMotion();
-  return (
-    <motion.div
-      className={className}
-      initial={reduce ? false : { opacity: 0, y: 22 }}
-      whileInView={reduce ? {} : { opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-    >
-      {children}
-    </motion.div>
-  );
-}
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#person`,
+      name: site.name,
+      jobTitle: site.jobTitle,
+      description: site.description,
+      url: SITE_URL,
+      email: `mailto:${site.email}`,
+      image: `${SITE_URL}/opengraph-image`,
+      sameAs: site.sameAs,
+      knowsAbout: ["TypeScript", "Next.js", "React", "Node.js", "PostgreSQL", "Shopify", "Shopify Plus", "HubSpot", "WordPress", "SaaS"],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: site.name,
+      inLanguage: "en",
+      publisher: { "@id": `${SITE_URL}/#person` },
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${SITE_URL}/#profile`,
+      url: SITE_URL,
+      name: site.title,
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      mainEntity: { "@id": `${SITE_URL}/#person` },
+    },
+  ],
+};
 
 function SectionTitle({ label, title, copy }: { label: string; title: string; copy?: string }) {
   return (
@@ -87,41 +105,30 @@ function SectionTitle({ label, title, copy }: { label: string; title: string; co
 }
 
 export default function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <main>
-      <header className="nav-wrap">
-        <a href="#top" className="logo" aria-label="Go to top">NA<span>.</span></a>
-        <nav className={menuOpen ? "nav-links open" : "nav-links"} aria-label="Primary navigation">
-          {[["Work", "#work"], ["Expertise", "#expertise"], ["About", "#about"], ["Contact", "#contact"]].map(([name, href]) => (
-            <a key={name} href={href} onClick={() => setMenuOpen(false)}>{name}</a>
-          ))}
-        </nav>
-        <a className="nav-cta" href="#contact">Start a project <ArrowUpRight size={15} /></a>
-        <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
-          {menuOpen ? <X /> : <Menu />}
-        </button>
-      </header>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <Nav />
 
       <section className="hero" id="top">
         <div className="hero-noise" />
         <div className="hero-copy">
-          <motion.p className="availability" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <p className="availability fade-in">
             <span /> Available for select projects
-          </motion.p>
-          <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .1, duration: .8 }}>
+          </p>
+          <h1 className="rise-in">
             I engineer the<br />systems behind<br /><em>digital growth.</em>
-          </motion.h1>
-          <motion.p className="hero-intro" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .35 }}>
-            Noman Akhtar is an full stack engineer building fast, resilient products with TypeScript, Next.js, React and Node.js—backed by deep Shopify, HubSpot, WordPress and SaaS expertise.
-          </motion.p>
-          <motion.div className="hero-actions" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .5 }}>
+          </h1>
+          <p className="hero-intro fade-in d1">
+            Noman Akhtar is a senior full stack engineer building fast, resilient products with TypeScript, Next.js, React and Node.js—backed by deep Shopify, HubSpot, WordPress and SaaS expertise.
+          </p>
+          <div className="hero-actions fade-in d2">
             <a href="#work" className="button primary">Explore selected work <ArrowDownRight size={17} /></a>
             <a href="#contact" className="text-link">Let&apos;s talk <ArrowUpRight size={16} /></a>
-          </motion.div>
+          </div>
         </div>
 
-        <motion.div className="system-card" initial={{ opacity: 0, scale: .96 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: .25, duration: .8 }}>
+        <div className="system-card scale-in">
           <div className="console-bar"><span /><span /><span /><p>architecture.map</p><Braces size={15} /></div>
           <div className="system-map">
             <div className="orbit orbit-one" />
@@ -137,7 +144,7 @@ export default function Home() {
             </svg>
           </div>
           <div className="console-status"><span><Check size={13} /> Production ready</span><span>CET · Remote worldwide</span></div>
-        </motion.div>
+        </div>
 
         <div className="hero-foot">
           <p>Senior Full Stack Engineer</p>
@@ -180,11 +187,11 @@ export default function Home() {
             <div className="project-meta"><span>Full-stack platform</span><span>01</span></div>
             <a className="academy-card-image" href="https://nxaacademy.com/" target="_blank" rel="noreferrer" aria-label="Visit the Next Athlete Academy website">
               <Image
-                src="/projects/next-athlete-academy/recruitment-platform.png"
+                src="/projects/next-athlete-academy/recruitment-platform.webp"
                 alt="Next Athlete Academy student-athlete recruitment website"
-                width={3014}
-                height={1704}
-                sizes="(max-width: 620px) calc(100vw - 88px), (max-width: 900px) calc(50vw - 62px), 368px"
+                width={1400}
+                height={792}
+                sizes={CARD_SIZES}
               />
             </a>
             <h3>Next Athlete Academy</h3>
@@ -195,7 +202,7 @@ export default function Home() {
           <Reveal className="featured-card monitor-card">
             <div className="project-meta"><span>Shopify application</span><span>02</span></div>
             <div className="product-banner">
-              <Image src="/projects/product-conversion/00-banner.svg" alt="Product Conversion Monitor features including live dashboard, conversion drop alerts, revenue at risk, and product health scores" width={1600} height={600} priority />
+              <Image src="/projects/product-conversion/00-banner.svg" alt="Product Conversion Monitor features including live dashboard, conversion drop alerts, revenue at risk, and product health scores" width={1600} height={600} unoptimized />
             </div>
             <h3>Product Conversion Monitor</h3>
             <p>A product-level analytics platform that tracks views, add-to-carts, purchases and revenue, then surfaces meaningful conversion drops, health scores and revenue at risk.</p>
@@ -205,7 +212,7 @@ export default function Home() {
           <Reveal className="featured-card hockey-card">
             <div className="project-meta"><span>Membership platform</span><span>03</span></div>
             <div className="membership-feature-image">
-              <Image src="/projects/hockey-hero/equipment-membership.png" alt="Hockey Hero membership platform showing equipment plans, skater registration, and subscription options" width={2626} height={1698} />
+              <Image src="/projects/hockey-hero/equipment-membership.webp" alt="Hockey Hero membership platform showing equipment plans, skater registration, and subscription options" width={1400} height={906} sizes={CARD_SIZES} />
             </div>
             <h3>Hockey Hero Equipment</h3>
             <p>A custom membership platform that connects athlete onboarding, recurring billing, account management and a self-service customer experience.</p>
@@ -215,7 +222,7 @@ export default function Home() {
           <Reveal className="featured-card smartpop-card">
             <div className="project-meta"><span>Shopify application</span><span>04</span></div>
             <div className="smartpop-feature-image">
-              <Image src="/projects/smartpop/feature.png" alt="SmartPop Shopify app showing branded age verification, promotional popups, and back-in-stock email capture" width={2254} height={1250} />
+              <Image src="/projects/smartpop/feature.webp" alt="SmartPop Shopify app showing branded age verification, promotional popups, and back-in-stock email capture" width={1400} height={776} sizes={CARD_SIZES} />
             </div>
             <h3>SmartPop</h3>
             <p>An all-in-one popup system for age verification, promotions and back-in-stock email capture, with precise storefront targeting, translations and performance analytics.</p>
@@ -225,7 +232,7 @@ export default function Home() {
           <Reveal className="featured-card checkout-card">
             <div className="project-meta"><span>Shopify Plus application</span><span>05</span></div>
             <div className="checkout-feature-image">
-              <Image src="/projects/shine-checkout/00-feature.png" alt="Shine Checkout featuring 22 drag-and-drop Shopify Plus checkout blocks for upsells, urgency, trust, and gift options" width={1600} height={900} />
+              <Image src="/projects/shine-checkout/00-feature.webp" alt="Shine Checkout featuring 22 drag-and-drop Shopify Plus checkout blocks for upsells, urgency, trust, and gift options" width={1400} height={788} sizes={CARD_SIZES} />
             </div>
             <h3>Shine Checkout</h3>
             <p>A no-code checkout customizer for Shopify Plus that lets merchants arrange upsells, trust content, reviews, custom fields and conversion-focused blocks from one dashboard.</p>
