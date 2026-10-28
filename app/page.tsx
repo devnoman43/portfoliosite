@@ -149,7 +149,7 @@ export default function Home() {
         <div className="hero-foot">
           <p>Senior Full Stack Engineer</p>
           <p>TypeScript · Next.js · React · Node.js</p>
-          <p>Based in Austria · Working globally</p>
+          <p>Based in USA · Working globally</p>
         </div>
       </section>
 
