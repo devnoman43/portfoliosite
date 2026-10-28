@@ -30,7 +30,7 @@ const projects: Array<{ name: string; type: string; stack: string; tone: string;
   { name: "Big Green Egg Canada", type: "Premium outdoor commerce", stack: "Shopify · Liquid · Product discovery", tone: "lime", url: "https://biggreenegg.ca/" },
   { name: "Fody Foods", type: "Food & wellness commerce", stack: "Shopify · Liquid · Subscriptions", tone: "rose", url: "https://www.fodyfoods.com/" },
   { name: "Earth Rated", type: "Global pet-care storefront", stack: "Shopify · Liquid · Localization", tone: "amber", url: "https://www.earthrated.com/" },
-  { name: "Peeko Oysters", type: "Technology . Food . Events", stack: "HubSpot · CDN · eCommerce", tone: "violet", url: "https://peekooysters.com/" },
+  { name: "Peeko Oysters", type: "Technology . Food . Events", stack: "HubSpot · CDN · eCommerce", tone: "mint", url: "https://peekooysters.com/" },
   { name: "Unicon", type: "Technology . Education . Engineering", stack: "HubSpot · CDN · Automation", tone: "violet", url: "https://www.unicon.net/" },
 ];
 
@@ -41,6 +41,7 @@ const services = [
   ["Next.js applications", "Fast, scalable products built with the App Router, React and modern server architecture.", Layers3],
   ["Node.js systems & APIs", "Secure backend services, REST APIs, webhooks, integrations and recurring workflows.", ServerCog],
   ["Shopify app engineering", "Embedded apps, Shopify Plus extensions, billing, analytics and custom commerce products.", ShoppingBag],
+  ["HubSpot automation", "HubSpot CRM Automation, Lead Assignment & Routing, Sales Pipeline Automation, API Integrations, Advanced HubL Development, Custom Workflow Development", ShoppingBag],
 ];
 
 const experience = [
@@ -222,19 +223,19 @@ export default function Home() {
           <Reveal className="featured-card smartpop-card">
             <div className="project-meta"><span>Shopify application</span><span>04</span></div>
             <div className="smartpop-feature-image">
-              <Image src="/projects/smartpop/feature.webp" alt="SmartPop Shopify app showing branded age verification, promotional popups, and back-in-stock email capture" width={1400} height={776} sizes={CARD_SIZES} />
+              <Image src="/projects/flytocartpro/flytocartbanner.png" alt="Fly to Cart, Custom Animtions, Custom Sound Effects" width={1400} height={776} sizes={CARD_SIZES} />
             </div>
-            <h3>SmartPop</h3>
-            <p>An all-in-one popup system for age verification, promotions and back-in-stock email capture, with precise storefront targeting, translations and performance analytics.</p>
-            <div className="tag-row"><span>Age gate</span><span>Targeting</span><span>Analytics</span></div>
-            <a className="project-live" href="https://apps.shopify.com/smartpop" target="_blank" rel="noreferrer">View on Shopify <ArrowUpRight size={15} /></a>
+            <h3>Fly to Cart Pro</h3>
+            <p>Fly to Cart Pro enhances the shopping experience with customizable add-to-cart animations and sound effects for engaging, interactive storefronts. Choose from 8 animation styles and 8 sound effects, save multiple combinations, and activate your preferred setup anytime.</p>
+            <div className="tag-row"><span>Cart</span><span>Animations</span><span>Sounds</span></div>
+            <a className="project-live" href="https://apps.shopify.com/fly-to-cart-pro" target="_blank" rel="noreferrer">View on Shopify <ArrowUpRight size={15} /></a>
           </Reveal>
           <Reveal className="featured-card checkout-card">
             <div className="project-meta"><span>Shopify Plus application</span><span>05</span></div>
             <div className="checkout-feature-image">
-              <Image src="/projects/shine-checkout/00-feature.webp" alt="Shine Checkout featuring 22 drag-and-drop Shopify Plus checkout blocks for upsells, urgency, trust, and gift options" width={1400} height={788} sizes={CARD_SIZES} />
+              <Image src="/projects/smartbundle/smartbundles.webp" alt="Shine Checkout featuring 22 drag-and-drop Shopify Plus checkout blocks for upsells, urgency, trust, and gift options" width={1400} height={788} sizes={CARD_SIZES} />
             </div>
-            <h3>Shine Checkout</h3>
+            <h3>Smart Bundle Upsell</h3>
             <p>A no-code checkout customizer for Shopify Plus that lets merchants arrange upsells, trust content, reviews, custom fields and conversion-focused blocks from one dashboard.</p>
             <div className="tag-row"><span>Shopify Plus</span><span>Checkout UI</span><span>Upsells</span></div>
             <a className="project-live" href="https://apps.shopify.com/checkout-enhancer-for-plus" target="_blank" rel="noreferrer">View on Shopify <ArrowUpRight size={15} /></a>
