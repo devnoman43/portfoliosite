@@ -163,19 +163,19 @@ export default function Home() {
             <span className="journey-dot" />
             <small>2016 — 2018</small>
             <h3>Web engineering</h3>
-            <p>Started with hands-on WordPress, frontend and backend development at iPlex and ApricotLaw.</p>
+            <p>Started with hands-on WordPress, frontend and backend development at iPlex.</p>
           </div>
           <div className="journey-step">
             <span className="journey-dot" />
             <small>2019 — 2024</small>
             <h3>International commerce</h3>
-            <p>Expanded into Shopify and full stack product delivery with HRVST, Wholesale Helper, Toptal and Bildit.</p>
+            <p>Expanded into Shopify and full stack product delivery with iPlex, Trellis and Apricotlaw.</p>
           </div>
           <div className="journey-step current">
             <span className="journey-dot" />
-            <small>May 2026 — Present</small>
+            <small>Sep 2026 — Present</small>
             <h3>Full stack engineering</h3>
-            <p>Part-time Full Stack Engineer at 2gether2shine (20 hours/month), building TypeScript, Next.js, Node.js and Shopify products from architecture through operations.</p>
+            <p>Part-time Full Stack Engineer at Mind & Metrics (20 hours/month), building TypeScript, Next.js, Node.js, HubSpot and Shopify products from architecture through operations.</p>
           </div>
         </div>
       </section>
