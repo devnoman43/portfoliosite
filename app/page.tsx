@@ -161,13 +161,13 @@ export default function Home() {
         <div className="journey-track">
           <div className="journey-step">
             <span className="journey-dot" />
-            <small>2011 — 2017</small>
+            <small>2016 — 2018</small>
             <h3>Web engineering</h3>
             <p>Started with hands-on WordPress, frontend and backend development at iPlex and ApricotLaw.</p>
           </div>
           <div className="journey-step">
             <span className="journey-dot" />
-            <small>2018 — 2024</small>
+            <small>2019 — 2024</small>
             <h3>International commerce</h3>
             <p>Expanded into Shopify and full stack product delivery with HRVST, Wholesale Helper, Toptal and Bildit.</p>
           </div>
